@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Box Email</title>
+    <style>
+        table {
+            margin: 20px 0;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Settings</h1>
+
+<form th:action="@{/box/update}" th:object="${box}" method="post">
+    <table>
+        <tr>
+            <td><label for="languages">Languages</label></td>
+            <td>
+                <select id="languages" th:field="*{languages}">
+                    <option value="English">English</option>
+                    <option value="Vietnamese">Vietnamese</option>
+                    <option value="French">French</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="pageSize">Page Size:</label></td>
+            <td>
+                Show <select  id="pageSize" th:field="*{pageSize}">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+                emails per page
+            </td>
+        </tr>
+        <tr>
+            <td><label for="spamFilter">Spams filter:</label></td>
+            <td>
+                <input type="checkbox" id="spamFilter" th:field="*{spamsFilter}" />
+                Enable spams filter
+            </td>
+        </tr>
+        <tr>
+            <td><label for="signature">Signature:</label></td>
+            <td>
+                <textarea id="signature" th:field="*{signature}" rows="4" cols="30"></textarea>
+            </td>
+        </tr>
+    </table>
+
+    <div class="button-container">
+        <button type="submit">Update</button>
+    </div>
+</form>
+
+</body>
+</html>
